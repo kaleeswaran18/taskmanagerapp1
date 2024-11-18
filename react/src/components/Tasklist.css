@@ -1,0 +1,339 @@
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  align-items: center; /* Vertically aligns buttons in the middle */
+  flex-wrap: wrap; /* Allows buttons to wrap if needed */
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+.view-log-btn,
+.add-task-btn,
+.filters select,
+.filters input {
+  margin: 0; /* Remove default margin */
+}
+
+/* Button container flex settings */
+.view-log-btn {
+  background-color: #28a745; /* Green button for viewing logs */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.view-log-btn:hover {
+  background-color: #218838;
+}
+
+.add-task-btn {
+  background-color: #ffc107; /* Yellow for adding new task */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-task-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Filters Styles */
+.filters {
+  margin: 0; /* Remove bottom margin */
+  display: flex;
+  flex-wrap: wrap; /* Allow the filter form to wrap if needed */
+  gap: 10px; /* Space between filter elements */
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+}
+
+.filters select,
+.filters input {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+/* Task List Grid */
+.task-list-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
+  gap: 20px; /* Space between cards */
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 20px 0; /* Add some spacing from other elements */
+}
+
+/* Task Item Styles */
+.task-item {
+  background-color: #f9f9f9; /* Light background for cards */
+  border: 1px solid #e0e0e0; /* Subtle border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 15px; /* Internal padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  display: flex;
+  flex-direction: column; /* Arrange content vertically */
+  justify-content: space-between; /* Space out content */
+  transition: transform 0.2s, box-shadow 0.2s; /* Add hover effect */
+}
+
+.task-item:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.task-item p {
+  margin: 8px 0; /* Consistent spacing between paragraphs */
+  font-size: 14px; /* Standard font size */
+  color: #333; /* Text color */
+}
+
+/* Task Actions Styles */
+.task-actions {
+  margin-top: 15px; /* Space above the buttons */
+  display: flex;
+  justify-content: space-between; /* Spread buttons apart */
+}
+
+.task-actions button {
+  background-color: #007bff; /* Primary button color */
+  color: white; /* White text for contrast */
+  border: none; /* Remove border */
+  padding: 10px 15px; /* Button padding */
+  border-radius: 5px; /* Rounded button corners */
+  font-size: 14px; /* Button text size */
+  cursor: pointer; /* Pointer cursor for buttons */
+  transition: background-color 0.2s, transform 0.2s; /* Smooth hover effect */
+}
+
+.task-actions button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Responsive Design for Task List */
+@media (max-width: 1024px) {
+  .task-list-items {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .task-list-items {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .task-item {
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .task-actions button {
+    font-size: 12px; /* Smaller button text */
+    padding: 8px 10px; /* Compact buttons */
+  }
+}
+
+/* Active Log Fade-In Animation */
+@keyframes fadeInActiveLog {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Active Log Styles */
+.active-log {
+  animation: fadeInActiveLog 0.5s ease-out;
+  opacity: 0;
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.active-log p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Darker semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Popup Container */
+.popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80%; /* Limit height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Adding shadow for depth */
+  animation: slideIn 0.4s ease-out;
+}
+
+/* Popup Entrance Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade-In Animation for Popup Overlay */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s;
+}
+
+.close-icon:hover {
+  color: #e74c3c; /* Change color to red on hover */
+}
+
+/* Logs Container */
+.logs-container {
+  padding-top: 20px;
+  max-height: 60vh; /* Limit the height for large log sections */
+  overflow-y: auto; /* Scroll if too many logs */
+}
+
+.logs-container .log-card {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logs-container .log-header {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.logs-container .log-body p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Error Message */
+.error {
+  color: #e74c3c; /* Red color for errors */
+  font-size: 14px;
+  margin-top: 10px;
+}
+/* Container for the filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  gap: 20px; /* Adds space between elements */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Styling the label elements */
+.filters label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333; /* Dark text color */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 200px; /* Fixed width for labels */
+}
+
+/* Styling the select input (for status filter) */
+.filters select,
+.filters input[type="date"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  width: 100%; /* Make the input stretch to fill the container */
+  background-color: white;
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Add a hover effect on the inputs */
+.filters select:hover,
+.filters input[type="date"]:hover {
+  border-color: #007bff; /* Blue border on hover */
+}
+
+/* Focus effect to highlight the input */
+.filters select:focus,
+.filters input[type="date"]:focus {
+  border-color: #0056b3; /* Darker blue on focus */
+  outline: none; /* Remove the default focus outline */
+}
+
+/* Responsive design: stack elements for smaller screens */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .filters label {
+    width: auto; /* Let labels take up full width in small screens */
+  }
+
+  .filters select,
+  .filters input[type="date"] {
+    width: 100%; /* Ensure inputs stretch to full width */
+  }
+}

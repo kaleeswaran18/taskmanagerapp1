@@ -1,0 +1,427 @@
+body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    padding: 2rem; /* Base padding */
+  }
+  .register-prompt {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .register-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Container styling */
+  .login-container, .register-container {
+    max-width: 500px;
+    width: 95%; /* Full width on smaller screens */
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .login-container:hover, .register-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Title styling */
+  .login-title, .register-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form styling */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .form-input, .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+  }
+  
+  .form-input:focus, .form-select:focus {
+    border-color: #fda085;
+    box-shadow: 0 0 5px rgba(253, 160, 133, 0.5);
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #fda085;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #f6d365;
+    transform: translateY(-3px);
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive breakpoints */
+  
+  /* Large devices (desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .login-container, .register-container {
+      width: 650px;
+    }
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .login-container, .register-container {
+      width: 600px;
+      padding: 2.5rem;
+    }
+  
+    .login-title, .register-title {
+      font-size: 2.2rem;
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px to 767px) */
+  @media (max-width: 767px) {
+    .login-container, .register-container {
+      width: 90%;
+      padding: 1.5rem;
+    }
+  
+    .login-title, .register-title {
+      font-size: 1.8rem;
+    }
+  
+    .form-input, .form-select, .submit-button {
+      padding: 0.65rem;
+    }
+  }
+  /* General Button Styles */
+button {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px; /* Padding for a more clickable button */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Button text size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s, transform 0.2s ease; /* Smooth transition for hover */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade of blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Specific Styles for "Add New Task" and "View Active Log" Buttons */
+.add-task-btn {
+  margin-right: 20px; /* Space between buttons */
+}
+
+.view-log-btn {
+  margin-left: 20px; /* Space between buttons */
+}
+
+/* Filter Section Styles */
+.filters {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px; /* Space between filters */
+  flex-wrap: wrap; /* Allow filters to wrap on smaller screens */
+  justify-content: flex-start; /* Align filters to the left */
+}
+
+.filters label {
+  font-size: 14px; /* Label text size */
+  color: #333; /* Dark text for labels */
+  font-weight: 600; /* Make labels bold */
+}
+
+.filters select,
+.filters input {
+  padding: 8px 12px; /* Padding inside the inputs */
+  border: 1px solid #ccc; /* Light border color for inputs */
+  border-radius: 5px; /* Rounded corners for inputs */
+  font-size: 14px; /* Consistent font size with labels */
+  width: auto; /* Allow inputs to adjust their width */
+  min-width: 180px; /* Minimum width for the inputs */
+}
+
+.filters select:focus,
+.filters input:focus {
+  border-color: #007bff; /* Highlight border color on focus */
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow for better focus visibility */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column; /* Stack the filters vertically on smaller screens */
+    gap: 10px; /* Reduced gap for stacked layout */
+  }
+
+  .filters label {
+    font-size: 12px; /* Smaller label text on small screens */
+  }
+
+  button {
+    padding: 8px 15px; /* Smaller padding for buttons */
+    font-size: 12px; /* Smaller font size for buttons */
+  }
+}
+
+  
+  /* Extra small devices (phones, 599px and down) */
+  @media (max-width: 599px) {
+    .login-container, .register-container {
+      width: 95%;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+  
+    .login-title, .register-title {
+      font-size: 1.5rem;
+    }
+  
+    .form-input, .form-select, .submit-button {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+  /* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Popup Container */
+.popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+}
+
+/* Popup Entrance Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade-In Animation for Popup Overlay */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s;
+}
+
+.close-icon:hover {
+  color: #e74c3c; /* Change color to red on hover */
+}
+
+/* Title of Popup */
+h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Error Message */
+.error {
+  color: #e74c3c;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 16px;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  box-sizing: border-box; /* Ensure padding doesn't increase width */
+  transition: border-color 0.3s ease;
+}
+
+/* Focus Effects */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Form Buttons */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #3498db;
+  color: white;
+}
+
+.form-buttons button[type="submit"]:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px); /* Lift effect */
+}
+
+.form-buttons button[type="button"] {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: #ccc;
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Input focus effect */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border: 2px solid #3498db;
+}
+
+/* Scrollbar for Form */
+.popup::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popup::-webkit-scrollbar-thumb {
+  background-color: #3498db;
+  border-radius: 10px;
+}
+
+.popup::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 600px) {
+  .popup {
+    width: 100%;
+    max-width: none;
+    padding: 15px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 14px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .form-buttons button:last-child {
+    margin-bottom: 0;
+  }
+}
